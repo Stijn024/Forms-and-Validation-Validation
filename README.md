@@ -18,3 +18,10 @@
 
 The repository is structured with separate commits for each exercise in the Eloquent - Being relatable module. This allows you to review each stage of the module independently, making it easier to provide targeted feedback.
 Please refer to the specific commits to see the progress and implementation details for each of the four exercises.
+
+### 2.Validation → 1.Validation
+
+- Copy project from last exercise
+- Added validation in `BookController::store` for `title & author` 
+  *Both author and title are required and should be strings + combination must be unique*
+- `books/add.blade.php`: When Validation failes, errors & `old()`-values will be shown

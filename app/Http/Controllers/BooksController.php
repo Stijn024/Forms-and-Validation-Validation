@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Book;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class BooksController extends Controller
 {
@@ -30,7 +31,19 @@ class BooksController extends Controller
      */
     public function store(Request $request)
     {
-        $input = $request->only(['title', 'author']);
+        $input = $request->validate([
+            'title' => [
+                'required',
+                'string',
+                Rule::unique('books')->where(function ($query) use ($request) {
+                    return $query->where('title', $request->input('title'))
+                                 ->where('author', $request->input('author'));
+                }),
+            ],
+            'author' => ['required', 'string'],
+        ], [
+            'title.unique' => 'This book is already in your library'
+        ]);
 
         Book::create($input);
 
