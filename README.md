@@ -25,3 +25,12 @@ Please refer to the specific commits to see the progress and implementation deta
 - Added validation in `BookController::store` for `title & author` 
   *Both author and title are required and should be strings + combination must be unique*
 - `books/add.blade.php`: When Validation failes, errors & `old()`-values will be shown
+
+### 2.Validation → 2.Book editors
+
+- Created `books/edit.blade.php` with a form to edit books including the `read_at` time and a delete option
+- Added a link to the edit-page on `books/index.blade.php`
+- Added validation in `BookController::update` for `title & author & read_at` 
+  *Both author and title are required and should be strings*
+  *read_at is optionally*
+- Added delete logic to BooksController::destroy which deletes the record and returns to index

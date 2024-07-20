@@ -4,15 +4,17 @@
         <h2 class="text-center text-xl mb-6 text-gray-600 font-bold">All books</h2>
         <ul>
         @foreach ($books as $book)
-            <li class="relative bg-white p-2 rounded-lg mb-2 w-96 h-18 shadow-lg">
-                <h3 class="font-bold mb-1">{{ $book->title }}</h3>
-                <p>{{ $book->author }}</p>
+            <a href="{{ route('books.edit', $book->id) }}" class="block text-decoration-none">
+                <li class="relative bg-white p-2 rounded-lg mb-2 w-96 h-18 shadow-lg">
+                    <h3 class="font-bold mb-1">{{ $book->title }}</h3>
+                    <p>{{ $book->author }}</p>
 
-                <div class="absolute bottom-2 right-2">
-                    <label for="read-{{ $book->id }}" class="">{{ $book->isRead() ? 'Finished' : 'On the shelf' }}</label>
-                    <input id="read-{{ $book->id }}" type="checkbox" value="{{ $book->id }}" @checked($book->isRead()) class="toggle-read" />
-                </div>
-            </li>
+                    <div class="absolute bottom-2 right-2">
+                        <label for="read-{{ $book->id }}" class="">{{ $book->isRead() ? 'Finished' : 'On the shelf' }}</label>
+                        <input id="read-{{ $book->id }}" type="checkbox" value="{{ $book->id }}" @checked($book->isRead()) class="toggle-read" />
+                    </div>
+                </li>
+            </a>
         @endforeach
         </ul>
     </section>

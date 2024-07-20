@@ -61,25 +61,35 @@ class BooksController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Book $book)
     {
-        //
+        return view('books.edit', ['book' => $book]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Book $book)
     {
-        //
+        $input = $request->validate([
+            'title' => ['required', 'string'],
+            'author' => ['required', 'string'],
+            'read_at' => ['nullable', 'date'],
+        ]);
+
+        $book->update($input);
+
+        return redirect()->route('books.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Book $book)
     {
-        //
+        $book->delete();
+
+        return redirect()->route('books.index');
     }
 
     /**
