@@ -79,7 +79,7 @@ class BooksController extends Controller
 
         $book->update($input);
 
-        return redirect()->route('books.index');
+        return redirect()->route('books.index')->with('alert', "'{$input['title']}' has been saved.");;
     }
 
     /**
@@ -89,7 +89,7 @@ class BooksController extends Controller
     {
         $book->delete();
 
-        return redirect()->route('books.index');
+        return redirect()->route('books.index')->with('alert', "'$book->title' has been deleted.");
     }
 
     /**

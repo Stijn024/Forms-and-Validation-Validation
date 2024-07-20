@@ -34,3 +34,8 @@ Please refer to the specific commits to see the progress and implementation deta
   *Both author and title are required and should be strings*
   *read_at is optionally*
 - Added delete logic to BooksController::destroy which deletes the record and returns to index
+
+### 2.Validation → 3.Session Flashing
+
+- Added session flash messages when a Book is edited or deleted using `with()` in the `BooksController`
+- In the layout `app.blade.php`, display flash messages if they are set
