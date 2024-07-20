@@ -39,3 +39,14 @@ Please refer to the specific commits to see the progress and implementation deta
 
 - Added session flash messages when a Book is edited or deleted using `with()` in the `BooksController`
 - In the layout `app.blade.php`, display flash messages if they are set
+
+### 2.Validation → 4.Books Borrowers
+
+- Created a migration for Borrowers
+- Created `Borrower`-model with `$fillable`
+- Created `index & store` web-routes *
+- Created a view `borrowers.blade.php` containing a form to add 5 borrowers
+- Created `BorrowersController::index` returning the borrowers-view 
+- Created `BorrowersController::store` to validate and create borrowers in the database 
+
+* Note: *Order of Routes* Define custom routes before the resource routes to avoid any potential conflicts.
